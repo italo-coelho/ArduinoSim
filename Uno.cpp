@@ -74,8 +74,15 @@ namespace prog3{
         
         //pino 18, GND
         gpio pino_18(S_GND);
-        Uno::Pinos.push_back(pino_18);             
+        Uno::Pinos.push_back(pino_18);         
 
+        //pino 19, 5V
+        gpio pino_19(S_5V);
+        Uno::Pinos.push_back(pino_19);         
+
+        //pino 20, 3V3
+        gpio pino_20(S_3V3);
+        Uno::Pinos.push_back(pino_20);
 
     }
 
