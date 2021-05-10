@@ -1,6 +1,8 @@
 #ifndef GPIO_H
 #define GPIO_H
 
+#include "pino.h"
+
 namespace prog3
 {
     //Function
@@ -27,7 +29,7 @@ namespace prog3
     #define LOW     0
     #define HIGH    1023
 
-    class gpio
+    class gpio:pino
     {
         public:
             gpio();

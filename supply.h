@@ -10,7 +10,7 @@ namespace prog3
     #define S_GND   4
 
 
-    class supply
+    class supply:pino
     {
         public:
             supply();
