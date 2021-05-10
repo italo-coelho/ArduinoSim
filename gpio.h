@@ -19,6 +19,7 @@ namespace prog3
     #define SPI_SCLK        5
     #define SPI_MOSI        6
     #define SPI_MISO        7
+    #define SPI_CS          8
 
     #define VOLTAGE         5
     #define MAX_CURRENT     40e-3
