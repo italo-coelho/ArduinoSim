@@ -21,13 +21,11 @@ namespace prog3{
     public:
         periferico();
         periferico(int _prot);
-        periferico();
+        periferico()
     private:
         int protocolo;
         std::vector<pino> pinos;
         int tipo;
-    };
+    }
 
 }
-
-#endif

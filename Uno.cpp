@@ -136,11 +136,32 @@ namespace prog3
 
     void Uno::analogWrite(int _pin, int _state)
     {
-        pinD[_pin].setValue(_state);
+        if(pinD[_pin].getFunction() == PWM)
+        {
+            pinD[_pin].setValue(_state);
+        }
     }
 
     void Uno::digitalWrite(int _pin, int _state)
     {
-        pinD[_pin].setValue(_state);
+        if(pinD[_pin].getFunction() == OUTPUT)
+        {
+            pinD[_pin].setValue(_state);
+        }
+    }
+
+    void Uno::setUI(UI* _ui)
+    {
+        ui = _ui;
+        eeprom.setUI(ui);
+        int i;
+        for(i = 0; i < pinD.size(); i++)
+        {
+            pinD[i].setUI(ui);
+        }
+        for(i = 0; i < pinA.size(); i++)
+        {
+            pinA[i].setUI(ui);
+        }
     }
 }

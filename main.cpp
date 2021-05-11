@@ -23,6 +23,8 @@ int main()
     String command;     //Objeto de manipulação de Strings - Comandos
     Uno arduino;        //Objeto Arduino Uno
 
+    arduino.setUI(&ui);
+
     ui.show();          //Mostra a interface
     
     do
@@ -66,15 +68,15 @@ int main()
             
             if(command.has("INPUT_PULLUP"))
             {
-                arduino.getPinD(pin).setFunction(INPUT_PULLUP);
+                arduino.pinMode(pin, INPUT_PULLUP);
             } 
             else if(command.has("INPUT"))
             {
-                arduino.getPinD(pin).setFunction(INPUT);
+                arduino.pinMode(pin, INPUT);
             }
             else if(command.has("OUTPUT"))
             {
-                arduino.getPinD(pin).setFunction(OUTPUT);
+                arduino.pinMode(pin, OUTPUT);
             }
         }
 
@@ -99,19 +101,16 @@ int main()
 
             int pin = pinStr.findNumber();
             int value = valueStr.findNumber();
-            std::cout <<"Pin-->"<<pin<<"\n";
 
-            //Definir pino para PWM aqui
-
-            std::cout <<"Value-->"<<value<<"\n";
+            arduino.pinMode(pin, PWM);
+            arduino.analogWrite(pin, value);
         }
 
         if(command.has("analogRead"))
         {   
-            int pin = command.findNumber();
-            
+            int pin = command.findNumber();            
             // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
-            ui.print("Pino[" + std::to_string(pin) + "] = " + /*pinstate +*/ "\n");
+            ui.print("Pino[" + std::to_string(pin) + "] = " + std::to_string(arduino.analogRead(pin)) + "\n");
         }
 
         if(command.has("digitalRead"))

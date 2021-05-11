@@ -29,9 +29,9 @@ namespace prog3
             void show();
 
             // void setArduino();
+
         private:
             std::string console_str;
- 
     };
 }
 

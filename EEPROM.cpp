@@ -43,7 +43,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[EEPROM]: Memory was already started\n";
+            ui->print("[EEPROM]: Memory was already started\n");
+            // std::cout << "[EEPROM]: Memory was already started\n";
             return false;
         }
     }
@@ -88,12 +89,8 @@ namespace prog3
         }
     }
 
-
-
-
-
-
-
-
-
+    void EEPROM::setUI(UI* _ui)
+    {
+        ui = _ui;
+    }
 }

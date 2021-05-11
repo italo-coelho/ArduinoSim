@@ -1,6 +1,8 @@
 #ifndef EEPROM_H
 #define EEPROM_H
 
+#include "ui.h"
+
 namespace prog3
 {
     class EEPROM
@@ -9,6 +11,8 @@ namespace prog3
         EEPROM();
         ~EEPROM();
 
+        void setUI(UI* ui);
+
         bool begin(int _size);
         char read(int _position);
         void write(char _data, int _position);
@@ -16,6 +20,8 @@ namespace prog3
     private:
         int size;
         char* vector;
+
+        UI* ui;
     }; 
 }
 

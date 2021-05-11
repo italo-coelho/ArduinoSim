@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "ui.h"
 #include "pino.h"
 #include "EEPROM.h"
 
@@ -16,6 +17,9 @@ namespace prog3{
         std::vector<pino> pinS;
 
         EEPROM eeprom;
+
+        UI* ui;
+
     public:
         Uno();
 
@@ -31,6 +35,8 @@ namespace prog3{
         void EEPROMbegin(int _size);
         void EEPROMwrite(int _pos, char _data);
         char EEPROMread(int _pos);
+
+        void setUI(UI* _ui);
 
     };
 }
