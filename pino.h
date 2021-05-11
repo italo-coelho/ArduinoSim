@@ -9,21 +9,21 @@ namespace prog3
     enum tipos_pinos
     {
         SUPPLY_PIN=1,
-        GPIO_PIN=2;
-    }  
+        GPIO_PIN=2
+    };  
 
     //status
     enum status
     {
         OCUPADO=0,
-        DISPONIVEL=1;
-    }
+        DISPONIVEL=1
+    };
 
     
     class pino
     {
         int tipo;                                   //gpio ou supply pin
-        bool status;                                //ocupado ou disponivel
+        bool status=DISPONIVEL;                                //ocupado ou disponivel
         int N_pino;                                 //numeracao do pino
         std::string label;                          //Nome do pino
 
