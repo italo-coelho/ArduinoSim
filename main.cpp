@@ -15,17 +15,13 @@ using namespace prog3;
 
 int main()
 {
-    //Temp -- inserir no arduino UNO
-    // EEPROM eeprom;
-    //
+    UI ui;                  //Objeto de Interface - Linha de Comando
+    String command;         //Objeto de manipulação de Strings - Comandos
+    Uno arduino;            //Objeto Arduino Uno
 
-    UI ui;              //Objeto de Interface - Linha de Comando
-    String command;     //Objeto de manipulação de Strings - Comandos
-    Uno arduino;        //Objeto Arduino Uno
+    arduino.setUI(&ui);     //Especifica a classe responsável por imprimir as informações para o usuário
 
-    arduino.setUI(&ui);
-
-    ui.show();          //Mostra a interface
+    ui.show();              //Mostra a interface
     
     do
     {
@@ -61,7 +57,7 @@ int main()
             }
 
         }
-//ugabuga
+
         if(command.has("pinMode"))
         {   
             int pin = command.findNumber();
@@ -92,6 +88,10 @@ int main()
             {
                 arduino.digitalWrite(pin, LOW);
             }
+            else
+            {
+                ui.print("[digitalWrite]: Can only write HIGH or LOW\n");
+            }
         }
 
         if(command.has("analogWrite"))
@@ -110,14 +110,21 @@ int main()
         {   
             int pin = command.findNumber();            
             // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
-            ui.print("Pino[" + std::to_string(pin) + "] = " + std::to_string(arduino.analogRead(pin)) + "\n");
+            ui.print("Pino[A" + std::to_string(pin) + "] = " + std::to_string(arduino.analogRead(pin)) + "\n");
         }
 
         if(command.has("digitalRead"))
         {   
             int pin = command.findNumber();
             // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
-            ui.print("Pino[" + std::to_string(pin) + "] = " + std::to_string(arduino.digitalRead(pin)) + "\n");
+            if(arduino.digitalRead(pin) == 1023)
+            {
+                ui.print("Pino[D" + std::to_string(pin) + "] = " + "HIGH" + "\n");
+            }
+            else if (arduino.digitalRead(pin) == 0)
+            {
+                ui.print("Pino[D" + std::to_string(pin) + "] = " + "LOW" + "\n");
+            }
         }
 
         if(command.has("clear") || command.has("limpa"))

@@ -19,7 +19,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid pin number\n";
+            ui->print("[gpio]: Invalid pin number\n");
+            // std::cout << "[gpio]: Invalid pin number\n";
             pin = 0;
         }
 
@@ -35,7 +36,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid pin number\n";
+            ui->print( "[gpio]: Invalid pin number\n");
+            // std::cout << "[gpio]: Invalid pin number\n";
             pin = 0;
         }
 
@@ -45,7 +47,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
+            ui->print("[gpio]: Invalid function - defaulting to INPUT\n");
+            // std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
             function = INPUT;
         }
 
@@ -69,7 +72,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid pin number\n";
+            ui->print("[gpio]: Invalid pin number\n");
+            // std::cout << "[gpio]: Invalid pin number\n";
             pin = 0;
         }
 
@@ -79,7 +83,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
+            ui->print("[gpio]: Invalid function - defaulting to INPUT\n");
+            // std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
             function = INPUT;
         }
 
@@ -89,7 +94,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid protocol - defaulting to none\n";
+            ui->print("[gpio]: Invalid protocol - defaulting to none\n");
+            // std::cout << "[gpio]: Invalid protocol - defaulting to none\n";
             protocol = NONE;
         }
 
@@ -180,7 +186,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid pin number\n";
+            ui->print("[gpio]: Invalid pin number\n");
+            // std::cout << "[gpio]: Invalid pin number\n";
             pin = 0;
         }
     }
@@ -198,7 +205,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
+            ui->print("[gpio]: Invalid function - defaulting to INPUT\n");
+            // std::cout << "[gpio]: Invalid function - defaulting to INPUT\n";
             function = INPUT;
         }
 
@@ -216,7 +224,8 @@ namespace prog3
         }
         else
         {
-            std::cout << "[gpio]: Invalid protocol - defaulting to none\n";
+            ui->print("[gpio]: Invalid protocol - defaulting to none\n");
+            // std::cout << "[gpio]: Invalid protocol - defaulting to none\n";
             protocol = NONE;
         }
     }
@@ -231,7 +240,8 @@ namespace prog3
             }
             else
             {
-                std::cout << "[gpio]: Value can only be HIGH or LOW for digital output\n";
+                ui->print("[gpio]: Value can only be HIGH or LOW for digital output\n");
+                // std::cout << "[gpio]: Value can only be HIGH or LOW for digital output\n";
             }
         }
         else if(function == PWM)
@@ -242,7 +252,8 @@ namespace prog3
             }
             else
             {
-                std::cout << "[gpio]: Value out of bounds for PWM [0,255]\n";
+                ui->print("[gpio]: Value out of bounds for PWM [0,255]\n");
+                // std::cout << "[gpio]: Value out of bounds for PWM [0,255]\n";
             }
         }
         else
@@ -267,7 +278,8 @@ namespace prog3
             }
             else
             {
-                std::cout << "[gpio]: Value out of bounds [0,1023], keeping previous value of ->" << value << "\n";
+                ui->print("[gpio]: Value out of bounds [0,1023]\n");
+                // std::cout << "[gpio]: Value out of bounds [0,1023], keeping previous value of ->" << value << "\n";
             }
         }
     }
@@ -282,14 +294,21 @@ namespace prog3
             }
             else
             {
-                std::cout << "[gpio]: Invalid Load - defaulting to 1kOhm\n";
+                ui->print("[gpio]: Invalid Load - defaulting to 1kOhm\n");
+                // std::cout << "[gpio]: Invalid Load - defaulting to 1kOhm\n";
                 load = 1000;
             }
         }
         else
         {
-            std::cout << "[gpio]: Pin is NOT set to OUTPUT or PWM\n";
+            ui->print("[gpio]: Pin is NOT set to OUTPUT or PWM\n");
+            // std::cout << "[gpio]: Pin is NOT set to OUTPUT or PWM\n";
             load = 1000;
         }
+    }
+
+    void gpio::setUI(UI* _ui)
+    {
+        ui = _ui;
     }
 }

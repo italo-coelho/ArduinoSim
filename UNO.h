@@ -19,6 +19,7 @@ namespace prog3{
         EEPROM eeprom;
 
         UI* ui;
+        // friend class UI;
 
     public:
         Uno();
@@ -37,7 +38,6 @@ namespace prog3{
         char EEPROMread(int _pos);
 
         void setUI(UI* _ui);
-
     };
 }
 

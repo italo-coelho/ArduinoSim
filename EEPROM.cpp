@@ -1,7 +1,6 @@
 #include "EEPROM.h"
 
 #include <iostream>
-#include "ui.h"
 
 namespace prog3
 {
@@ -21,7 +20,13 @@ namespace prog3
     }
 
     //Methods
-    bool EEPROM::begin(int _size, UI& interface)
+
+    /**
+     * @brief Initializes the EEPROM memory
+     * @param _size the size desired for the memory
+     * @return true if successfull and false if fail
+     */
+    bool EEPROM::begin(int _size)
     {
         if(vector == nullptr)
         {
@@ -38,8 +43,8 @@ namespace prog3
             }
             else
             {
-                interface.print ("[EEPROM]: Invalid memory size\n");
-                interface.print(interface.console_str);
+                ui->print("[EEPROM]: Invalid memory size\n");
+                // std::cout << "[EEPROM]: Invalid memory size\n";
                 return false;
             }
         }
@@ -55,7 +60,8 @@ namespace prog3
     {
         if(vector == nullptr)
         {
-            std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
+            ui->print("[EEPROM]: Memory was not started, first use the 'begin' method\n");
+            // std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
             return '\0';
         }
         else
@@ -66,7 +72,8 @@ namespace prog3
             }
             else
             {
-                std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
+                ui->print("[EEPROM]: Position is out of bounds [0, " + std::to_string(size-1) + "]\n");
+                // std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
                 return '\0';
             }
         }
@@ -76,7 +83,8 @@ namespace prog3
     {
         if(vector == nullptr)
         {
-            std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
+            ui->print("[EEPROM]: Memory was not started, first use the 'begin' method\n");
+            // std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
         }
         else
         {
@@ -86,7 +94,8 @@ namespace prog3
             }
             else
             {
-                std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
+                ui->print("[EEPROM]: Position is out of bounds [0, " + std::to_string(size-1) + "]\n");
+                // std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
             }
         }
     }

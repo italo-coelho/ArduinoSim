@@ -2,6 +2,7 @@
 #include "String.h"
 
 #include <string>
+#include <iomanip>
 #include <iostream>
 
 namespace prog3
@@ -16,7 +17,7 @@ namespace prog3
     {
         clear();
         header();
-        //pinStatus()
+        // pinStatus();
         console();
     }
 
@@ -65,7 +66,7 @@ namespace prog3
         // std::cout << std::endl;
         // print("COMANDOS:                    UTILIZAÇÃO: \n\nlimpa/clear                  -> limpa o console  \nsair/exit                    -> encerra o programa \n\nanalogRead(n)                -> retorna o estado do pino analógico, onde 'n' é o número do pino e o retorno varia de 0 a 1023                \ndigitalRead(n)               -> retorna o estado do pino on/off, onde 'n' é o número do pino e 'estado' pode ser HIGH ou LOW                 \npinMode(n, modo)             -> define a funcionalidade do pino, onde 'n' é o número do pino e 'modo' pode ser INPUT, OUTPUT, INPUT_PULLUP   \ndigitalWrite(n, estado)      -> define o estado do pino on/off, onde 'n' é o número do pino e 'estado' pode ser HIGH ou LOW                  \nanalogWrite(n, intensidade)  -> define o estado do pino PWM, onde 'n' é o número do pino e 'intensidade' pode ser um valor de 0 a 255        \n\nEEPROM.begin(n)              -> inicializa a memória EEPROM, onde 'n' é o tamanho da memória                                                 \nEEPROM.read(pos)             -> retorna o caracter armazenado na posição 'pos'                                                               \nEEPROM.write(pos, \"c\")       -> grava o caracter na memória, na posiçõa 'pos' e o caracter deve estar entre aspas duplas ou simples        \n");
         
-        std::string help_str = "";
+        std::string help_str = "\n";
         help_str += "COMANDOS:                    UTILIZAÇÃO:\n";
         help_str += "limpa/clear                  -> limpa o console\n";
         help_str += "sair/exit                    -> encerra o programa\n";
@@ -98,10 +99,23 @@ namespace prog3
         console_str += _text;
         show();
     }
-
+    
     void UI::clearConsole()
     {
         console_str = "";
         show();
     }
+
+    // void UI::pinStatus()
+    // {
+    //     std::cout << "----------------------------------------" << std::endl;
+    //     for(auto i = 0; i < 7; i++)
+    //     {
+    //         std::cout << std::setw(20) << "DIGITAIS" << std::setw(20) << "ANALÓGICOS" << std::endl;
+    //         if(i < 6)
+    //         {
+    //             std::cout << std::setw(20) << "D" << i << " = " << std::to_string(pinD[i].getValue()) << std::setw(20) << "A" << i << " = " << std::to_string(uno.pinA[i].getValue()) << std::endl;
+    //         }
+    //     }
+    // }
 }

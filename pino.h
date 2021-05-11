@@ -1,33 +1,31 @@
 #ifndef PINO_H
 #define PINO_H
 
+#include "gpio.h"
 #include <string>
 
 namespace prog3
 {
     //tipos de pinos
-    enum tipos_pinos
-    {
-        SUPPLY_PIN=1,
-        GPIO_PIN=2
-    };  
+    #define SUPPLY_PIN 1
+    #define GPIO_PIN 2
 
     //status
-    enum status
-    {
-        OCUPADO=0,
-        DISPONIVEL=1
-    };
-
+    #define OCUPADO 1
+    #define DISPONIVEL 0
     
     class pino
     {
+    private:
         int tipo;                                   //gpio ou supply pin
-        bool status=DISPONIVEL;                                //ocupado ou disponivel
+        bool status;                                //ocupado ou disponivel
         int N_pino;                                 //numeracao do pino
         std::string label;                          //Nome do pino
+        gpio port;
 
     public:
+        pino(gpio _port);
+
         int getTipo();
         bool getStatus();
         std::string getLabel();
@@ -35,6 +33,18 @@ namespace prog3
         void setTipo(int tp);
         void setStatus(bool sts);
         void setLabel(std::string lbl);
+
+        //GPIO functions;
+        int getPin();
+        int getValue();
+        int getFunction();
+        int getProtocol();
+        void setUI(UI* _ui);
+        void setPin(int _pin);
+        void setValue(int _value);
+        void setFunction(int _function);
+        void setProtocol(int _protocol);
+
     };
 }
 

@@ -104,6 +104,7 @@ namespace prog3
         return pinA[index];
     }
 
+    
     void Uno::EEPROMbegin(int _size)
     {
         eeprom.begin(_size);
@@ -140,6 +141,10 @@ namespace prog3
         {
             pinD[_pin].setValue(_state);
         }
+        else
+        {
+            ui->print("[analogWrite]: Cannot write to non-PWM pin\n");
+        }
     }
 
     void Uno::digitalWrite(int _pin, int _state)
@@ -148,12 +153,21 @@ namespace prog3
         {
             pinD[_pin].setValue(_state);
         }
+        else if(pinD[_pin].getFunction() == INPUT)
+        {
+            ui->print("[digitalWrite]: Cannot write to INPUT pin\n");
+        }
+        else if(pinD[_pin].getFunction() == INPUT_PULLUP)
+        {
+            ui->print("[digitalWrite]: Cannot write to INPUT_PULLUP pin\n");
+        }
     }
 
     void Uno::setUI(UI* _ui)
     {
         ui = _ui;
         eeprom.setUI(ui);
+        
         int i;
         for(i = 0; i < pinD.size(); i++)
         {

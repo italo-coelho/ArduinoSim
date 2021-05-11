@@ -6,6 +6,8 @@ gpio ->     Classe para representar as funcionalidade de parâmetros
 #ifndef GPIO_H
 #define GPIO_H
 
+#include "ui.h"
+
 namespace prog3
 {
     //Function
@@ -55,6 +57,8 @@ namespace prog3
 
             void setValue(int _value);
             void setLoad(double _load);
+
+            void setUI(UI* _ui);
             
         private:
             int pin;
@@ -64,6 +68,8 @@ namespace prog3
             int value;
             double load;
             double current;
+
+            UI* ui;
     };
 }
 

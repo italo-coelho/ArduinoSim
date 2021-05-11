@@ -1,7 +1,5 @@
 #include "pino.h"
 
-#include "gpio.h"
-
 namespace prog3
 {
 
@@ -47,6 +45,7 @@ namespace prog3
     int pino::getValue(){return port.getValue();}
     int pino::getFunction(){return port.getFunction();}
     int pino::getProtocol(){return port.getProtocol();}
+    void pino::setUI(UI* _ui) {port.setUI(_ui);}
     void pino::setPin(int _pin) {port.setPin(_pin);}
     void pino::setValue(int _value) { port.setValue(_value);}
     void pino::setFunction(int _function) {port.setFunction(_function);}
