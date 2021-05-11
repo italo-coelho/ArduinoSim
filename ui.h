@@ -12,8 +12,6 @@ namespace prog3
             void help();
             void clear();
             void header();
-
-            void parseCommand(String _command);
             
             String readCommand();
 
@@ -22,7 +20,7 @@ namespace prog3
 
             // void setArduino();
         private:
-
+ 
     };
 
 

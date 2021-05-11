@@ -15,6 +15,7 @@ namespace prog3
             String(std::string _str);
             bool has(std::string _search);
             int indexOf(std::string _search);
+            char betweenQuotes();
             int findNumber();
 
     };

@@ -56,4 +56,18 @@ namespace prog3
 
         return number;
     }
+
+    char String::betweenQuotes()
+    {
+        int i;
+        for(i = 0; i < str.length(); i++)
+        {
+            if(str[i] == '\"' || str[i] == '\'') 
+            {
+                return str[i+1];
+            }
+        }
+
+        return '\"';
+    }
 }

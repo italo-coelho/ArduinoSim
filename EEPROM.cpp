@@ -48,10 +48,11 @@ namespace prog3
         if(vector == NULL)
         {
             std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
+            return '\0';
         }
         else
         {
-            if(_position >= 0 && _position <= size)
+            if(_position >= 0 && _position < size)
             {
                 return vector[_position];
             }
@@ -71,7 +72,7 @@ namespace prog3
         }
         else
         {
-            if(_position >= 0 && _position <= size)
+            if(_position >= 0 && _position < size)
             {
                 vector[_position] = _data;
             }
