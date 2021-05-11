@@ -39,6 +39,7 @@ namespace prog3
             else
             {
                 interface.print ("[EEPROM]: Invalid memory size\n");
+                interface.print(interface.console_str);
                 return false;
             }
         }
