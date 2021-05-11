@@ -2,7 +2,7 @@ TARGET=arduinosim
 CXX=g++
 CXXFLAGS=-std=c++17 -Wall -g
 
-SRCS= main.cpp pino.cpp gpio.cpp EEPROM.cpp ui.cpp Uno.cpp String.cpp supply.cpp
+SRCS=$(TARGET).cpp main.cpp pino.cpp gpio.cpp EEPROM.cpp ui.cpp Uno.cpp String.cpp supply.cpp
 HPP=$(TARGET).hpp gpio.h EEPROM.h UNO.h supply.h pino.h String.h ui.h
 OBJS=$(subst %.cpp, %.o,$(SRCS))
 
