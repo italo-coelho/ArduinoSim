@@ -61,7 +61,7 @@ int main()
             }
 
         }
-
+//ugabuga
         if(command.has("pinMode"))
         {   
             int pin = command.findNumber();
