@@ -1,3 +1,8 @@
+/*
+gpio ->     Classe para representar as funcionalidade de parâmetros
+            de um pino de General Purpose Input/Output de um Arduino
+*/
+
 #ifndef GPIO_H
 #define GPIO_H
 
@@ -29,7 +34,7 @@ namespace prog3
     #define LOW     0
     #define HIGH    1023
 
-    class gpio:pino
+    class gpio: public pino
     {
         public:
             gpio();
@@ -52,6 +57,7 @@ namespace prog3
 
             void setValue(int _value);
             void setLoad(double _load);
+            
         private:
             int pin;
             int function;

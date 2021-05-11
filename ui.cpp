@@ -12,6 +12,14 @@ namespace prog3
         std::system("clear");
     }
 
+    void UI::show()
+    {
+        clear();
+        header();
+        //pinStatus()
+        console();
+    }
+
     void UI::header()
     {
         std::cout << std::endl;
@@ -31,6 +39,11 @@ namespace prog3
         // std::cout << " @     @  @  @  @@@    @@@   @  @    @   @@@  " << std::endl;
 
         std::cout << std::endl;
+    }
+
+    void UI::console()
+    {
+        std::cout << console_str;
     }
 
     void UI::help()
@@ -60,5 +73,17 @@ namespace prog3
         String command(input);
 
         return command;
+    }
+
+    void UI::print(std::string _text)
+    {
+        console_str += _text;
+        show();
+    }
+
+    void UI::clearConsole()
+    {
+        console_str = "";
+        show();
     }
 }

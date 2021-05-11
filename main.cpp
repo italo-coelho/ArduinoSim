@@ -1,62 +1,87 @@
 #include "ui.h"
+#include "UNO.h"
 #include "gpio.h"
+#include "pino.h"
 #include "EEPROM.h"
 #include "String.h"
 
+#include <cctype>
 #include <string>
-#include <stdio.h>
 #include <sstream>
 #include <iostream>
-#include <cctype>
 #include <algorithm>
 
 using namespace prog3;
-using namespace std;
 
 int main()
 {
-    //Temp
-    EEPROM eeprom;
+    //Temp -- inserir no arduino UNO
+    // EEPROM eeprom;
     //
 
-    UI ui;
+    UI ui;              //Objeto de Interface - Linha de Comando
+    String command;     //Objeto de manipulação de Strings - Comandos
+    Uno arduino;        //Objeto Arduino Uno
 
-    ui.header();
+    ui.show();          //Mostra a interface
     
-    String command;
     do
     {
-        std::cout << "-> ";
-        command = ui.readCommand();   
+        // std::cout << "-> ";
+        ui.print("-> ");
+        command = ui.readCommand();
+        ui.print(command.cppString() + "\n");   
     
         if(command.has("ajuda") || command.has("Ajuda") || command.has("help"))
         {
             ui.help();
         }
 
-        if(command.has("EEPROM"))
+        if(command.has("EEPROM") || command.has("eeprom"))
         {
             if(command.has("begin"))
             {
-                eeprom.begin(command.findNumber());
+                arduino.EEPROMbegin(command.findNumber());
             }
             if(command.has("write"))
             {
-                eeprom.write(command.betweenQuotes(), command.findNumber());
+                arduino.EEPROMwrite(command.findNumber(), command.betweenQuotes());
             }
             if(command.has("read"))
             {
                 int pos = command.findNumber();
-                char data = eeprom.read(pos);
+                char data = arduino.EEPROMread(pos);
                 if(data != '\0')
                 {
-                    std::cout << "EEPROM[" << pos << "] = " << data << std::endl;
+                    // std::cout << "EEPROM[" << pos << "] = " << data << std::endl;
+                    ui.print("EEPROM[" + std::to_string(pos) + "] = " + data + "\n");
                 }
             }
 
         }
 
         if(command.has("pinMode"))
+        {   
+            int pin = command.findNumber();
+            std::cout <<"Pin-->"<<pin<<"\n";
+
+            if(command.has("INPUT_PULLUP"))
+            {
+                pino pin = arduino.getPinD(pin);
+                pin.setFunction();
+                std::cout <<"input pullup\n";
+            } 
+            else if(command.has("INPUT"))
+            {
+                std::cout <<"input\n";
+            }
+            else if(command.has("OUTPUT"))
+            {
+                std::cout <<"output\n";
+            }
+        }
+
+        if(command.has("digitalWrite"))
         {   
             int pin = command.findNumber();
             std::cout <<"Pin-->"<<pin<<"\n";
@@ -71,10 +96,39 @@ int main()
             }
         }
 
+        if(command.has("analogWrite"))
+        {   
+            String pinStr(command.subString(0, command.indexOf(",")));
+            String valueStr(command.subString(command.indexOf(",")));
+
+            int pin = pinStr.findNumber();
+            int value = valueStr.findNumber();
+            std::cout <<"Pin-->"<<pin<<"\n";
+
+            //Definir pino para PWM aqui
+
+            std::cout <<"Value-->"<<value<<"\n";
+        }
+
+        if(command.has("analogRead"))
+        {   
+            int pin = command.findNumber();
+            
+            // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
+            ui.print("Pino[" + std::to_string(pin) + "] = " + /*pinstate +*/ "\n");
+        }
+
+        if(command.has("digitalRead"))
+        {   
+            int pin = command.findNumber();
+            
+            // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
+            ui.print("Pino[" + std::to_string(pin) + "] = " + /*pinstate +*/ "\n");
+        }
+
         if(command.has("clear") || command.has("limpa"))
         {
-            ui.clear();
-            ui.header();
+            ui.clearConsole();
         }
     }
     while(!command.has("exit") && !command.has("sair"));

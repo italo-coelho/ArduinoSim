@@ -28,6 +28,11 @@ namespace prog3
             {
                 size = _size;
                 vector = new char[size];
+                int i;
+                for(i = 0; i < size; i++)
+                {
+                    vector[i] = '0';
+                }
                 return true;
             }
             else

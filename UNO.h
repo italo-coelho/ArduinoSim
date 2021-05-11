@@ -2,19 +2,31 @@
 #define UNO_H
 
 #include <vector>
+
 #include "pino.h"
+#include "EEPROM.h"
 
 namespace prog3{
 
-    class Uno {
+    class Uno 
+    {
     private:
-        std::vector<pino> Pinos;
+        std::vector<pino> pinD;
+        std::vector<pino> pinA;
+        std::vector<pino> pinS;
+
+        EEPROM eeprom;
     public:
         Uno();
 
-        pino getPino(int index) const;
+        pino getPinD(int index);
+        pino getPinA(int index);
 
-    };s
+        void EEPROMbegin(int _size);
+        void EEPROMwrite(int _pos, char _data);
+        char EEPROMread(int _pos);
+
+    };
 }
 
 #endif
