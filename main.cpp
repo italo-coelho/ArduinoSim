@@ -63,36 +63,32 @@ int main()
         if(command.has("pinMode"))
         {   
             int pin = command.findNumber();
-            std::cout <<"Pin-->"<<pin<<"\n";
-
+            
             if(command.has("INPUT_PULLUP"))
             {
-                pino pin = arduino.getPinD(pin);
-                pin.setFunction();
-                std::cout <<"input pullup\n";
+                arduino.getPinD(pin).setFunction(INPUT_PULLUP);
             } 
             else if(command.has("INPUT"))
             {
-                std::cout <<"input\n";
+                arduino.getPinD(pin).setFunction(INPUT);
             }
             else if(command.has("OUTPUT"))
             {
-                std::cout <<"output\n";
+                arduino.getPinD(pin).setFunction(OUTPUT);
             }
         }
 
         if(command.has("digitalWrite"))
         {   
             int pin = command.findNumber();
-            std::cout <<"Pin-->"<<pin<<"\n";
-
+            
             if(command.has("HIGH"))
             {
-                std::cout <<"ON\n";
+                arduino.digitalWrite(pin, HIGH);
             }
             else if(command.has("LOW"))
             {
-                std::cout <<"OFF\n";
+                arduino.digitalWrite(pin, LOW);
             }
         }
 
@@ -121,9 +117,8 @@ int main()
         if(command.has("digitalRead"))
         {   
             int pin = command.findNumber();
-            
             // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
-            ui.print("Pino[" + std::to_string(pin) + "] = " + /*pinstate +*/ "\n");
+            ui.print("Pino[" + std::to_string(pin) + "] = " + std::to_string(arduino.digitalRead(pin)) + "\n");
         }
 
         if(command.has("clear") || command.has("limpa"))

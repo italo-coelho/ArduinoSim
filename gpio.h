@@ -6,8 +6,6 @@ gpio ->     Classe para representar as funcionalidade de parâmetros
 #ifndef GPIO_H
 #define GPIO_H
 
-#include "pino.h"
-
 namespace prog3
 {
     //Function
@@ -34,7 +32,7 @@ namespace prog3
     #define LOW     0
     #define HIGH    1023
 
-    class gpio: public pino
+    class gpio
     {
         public:
             gpio();

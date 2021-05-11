@@ -1,5 +1,6 @@
 #include "UNO.h"
 #include "supply.h"
+#include "pino.h"
 #include "gpio.h"
 
 namespace prog3
@@ -118,4 +119,28 @@ namespace prog3
         return eeprom.read(_pos);
     }
 
+    int Uno::analogRead(int _pin)
+    {
+        return pinA[_pin].getValue();
+    }
+
+    int Uno::digitalRead(int _pin)
+    {
+        return pinD[_pin].getValue();
+    }
+
+    void Uno::pinMode(int _pin, int _mode)
+    {
+        pinD[_pin].setFunction(_mode);
+    }
+
+    void Uno::analogWrite(int _pin, int _state)
+    {
+        pinD[_pin].setValue(_state);
+    }
+
+    void Uno::digitalWrite(int _pin, int _state)
+    {
+        pinD[_pin].setValue(_state);
+    }
 }

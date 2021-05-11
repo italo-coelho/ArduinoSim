@@ -83,7 +83,7 @@ namespace prog3
             function = INPUT;
         }
 
-        if(_protocol >= 0 && _protocol <= 7)
+        if(_protocol >= 0 && _protocol <= 8)
         {
             protocol = _protocol;
         }
@@ -139,6 +139,7 @@ namespace prog3
         {
             return VOLTAGE*getCurrent()*(double(value)/255);
         }
+        return 0;
     }
 
     double gpio::getCurrent()
@@ -291,16 +292,4 @@ namespace prog3
             load = 1000;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

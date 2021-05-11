@@ -107,6 +107,7 @@ namespace prog3
                 return sub;
             }
         }
+        return sub;
     }
 
     std::string String::cppString()
