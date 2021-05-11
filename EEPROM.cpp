@@ -7,13 +7,13 @@ namespace prog3
     //Constructor
     EEPROM::EEPROM()
     {
-        vector = NULL;
+        vector = nullptr;
         size = 0;
     }
 
     EEPROM::~EEPROM()
     {
-        if(vector != NULL)
+        if(vector != nullptr)
         {
             delete [] vector;
         }
@@ -22,7 +22,7 @@ namespace prog3
     //Methods
     bool EEPROM::begin(int _size)
     {
-        if(vector == NULL)
+        if(vector == nullptr)
         {
             if(_size >= 0 && _size <= 1e5)
             {
@@ -50,7 +50,7 @@ namespace prog3
 
     char EEPROM::read(int _position)
     {
-        if(vector == NULL)
+        if(vector == nullptr)
         {
             std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
             return '\0';
@@ -71,7 +71,7 @@ namespace prog3
 
     void EEPROM::write(char _data, int _position)
     {
-        if(vector == NULL)
+        if(vector == nullptr)
         {
             std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
         }
