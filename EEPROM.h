@@ -16,10 +16,7 @@ namespace prog3
     private:
         int size;
         char* vector;
-    };
-    
-    
-    
+    }; 
 }
 
 #endif

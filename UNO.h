@@ -22,6 +22,12 @@ namespace prog3{
         pino getPinD(int index);
         pino getPinA(int index);
 
+        int analogRead(int _pin);
+        int digitalRead(int _pin);
+        void pinMode(int _pin, int _mode);
+        void analogWrite(int _pin, int _state);
+        void digitalWrite(int _pin, int _state);
+        
         void EEPROMbegin(int _size);
         void EEPROMwrite(int _pos, char _data);
         char EEPROMread(int _pos);
