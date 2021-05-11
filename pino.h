@@ -6,12 +6,19 @@
 namespace prog3
 {
     //tipos de pinos
-    constexpr SUPPLY_PIN 1
-    constexpr GPIO_PIN 2
+    enum tipos_pinos
+    {
+        SUPPLY_PIN=1,
+        GPIO_PIN=2;
+    }  
 
     //status
-    constexpr OCUPADO true
-    constexpr DISPONIVEL false
+    enum status
+    {
+        OCUPADO=0,
+        DISPONIVEL=1;
+    }
+
     
     class pino
     {
