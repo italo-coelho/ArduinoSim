@@ -1,6 +1,7 @@
 #include "EEPROM.h"
 
 #include <iostream>
+#include "ui.h"
 
 namespace prog3
 {
@@ -20,7 +21,7 @@ namespace prog3
     }
 
     //Methods
-    bool EEPROM::begin(int _size)
+    bool EEPROM::begin(int _size, UI& interface)
     {
         if(vector == nullptr)
         {
@@ -37,7 +38,7 @@ namespace prog3
             }
             else
             {
-                std::cout << "[EEPROM]: Invalid memory size\n";
+                interface.print ("[EEPROM]: Invalid memory size\n");
                 return false;
             }
         }
