@@ -7,9 +7,8 @@ UI ->       Classe para apresentar a interface para o usuário na linha
 #define UI_H
 
 #include "String.h"
-
+#include "EEPROM.h"
 #include <string>
-#include <vector>
 
 namespace prog3
 {
@@ -21,17 +20,20 @@ namespace prog3
             void header();
             void console();
             
-            void print(std::string _text);
+            
+            static void print(std::string _text);
             void clearConsole();
 
             String readCommand();
 
+            // void arduinoPins();
             void show();
 
             // void setArduino();
-
         private:
-            std::string console_str;
+            static std::string console_str;
+            
+            friend class EEPROM;
     };
 }
 

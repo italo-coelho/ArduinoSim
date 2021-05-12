@@ -6,6 +6,7 @@
 #include "ui.h"
 #include "pino.h"
 #include "EEPROM.h"
+#include "Timer.h"
 
 namespace prog3{
 
@@ -17,6 +18,8 @@ namespace prog3{
         std::vector<pino> pinS;
 
         EEPROM eeprom;
+        Timer timer;
+        
 
         UI* ui;
         // friend class UI;
