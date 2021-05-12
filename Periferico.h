@@ -6,16 +6,14 @@
 
 namespace prog3{
 
-    //protocolos
-    #define UART 1
-    #define SPI 2
-    #define I2C 3
+    enum Protocolos { UART  = 1,
+                      SPI   = 2,
+                      I2C   = 3};
 
-    //tipo
-    #define SENSOR_TEMP 1
-    #define GPS 2
-    #define SENSOR_LUMINOSIDADE 3
-
+    enum Tipos { SENSOR_TEMP            = 1,
+                 GPS                    = 2,
+                 SENSOR_LUMINOSIDADE    = 3};
+                 
     class periferico
     {
     public:

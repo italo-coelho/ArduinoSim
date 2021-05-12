@@ -1,17 +1,18 @@
 #include "Timer.h"
 
-namespace prog3{
+namespace prog3
+{
 
     Timer::Timer()
     {
         clock_frequency= DEFAULT_CLOCK_FREQUENCY;
-        t_init = chrono::high_resolution_clock::now();
+        t_init = std::chrono::high_resolution_clock::now();
     }
 
     Timer::Timer (double clk_freq)
     {
         clock_frequency=clk_freq;
-        t_init = chrono::high_resolution_clock::now();
+        t_init = std::chrono::high_resolution_clock::now();
     }
 
     double Timer::getClockFrequency() const
@@ -19,11 +20,11 @@ namespace prog3{
         return clock_frequency;
     }
 
-    string Timer::getRealTime() const
+    std::string Timer::getRealTime() const
     {   
         std::string _str;
-        chrono::system_clock::time_point realTime = chrono::system_clock::now();
-        time_t aux = chrono::system_clock::to_time_t(realTime);
+        std::chrono::system_clock::time_point realTime = std::chrono::system_clock::now();
+        time_t aux = std::chrono::system_clock::to_time_t(realTime);
         _str = ctime(&aux);
 
         return _str;
@@ -31,8 +32,8 @@ namespace prog3{
 
     double Timer::millis() const
     {
-        chrono::high_resolution_clock::time_point t_atual = chrono::high_resolution_clock::now();
-        chrono::duration<double>periodo = chrono::duration_cast<chrono::duration<double>>(t_atual - t_init);
+        std::chrono::high_resolution_clock::time_point t_atual = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double>periodo = std::chrono::duration_cast<std::chrono::duration<double>>(t_atual - t_init);
         return periodo.count();
     }
 }

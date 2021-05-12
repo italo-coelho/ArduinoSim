@@ -8,7 +8,6 @@ namespace prog3
 
     Uno::Uno()
     {
-
         /*========================
                     GPIOS
         ==========================*/
@@ -95,19 +94,18 @@ namespace prog3
 
     }
 
-    double Uno::millis()
-    {
-        return timer.millis();
-    }
-
     pino Uno::getPinD(int index)
     {
-        return pinD[index];
+        unsigned int _index = unsigned(index);
+
+        return pinD[_index];
     } 
 
     pino Uno::getPinA(int index)
     {
-        return pinA[index];
+        unsigned int _index = unsigned(index);
+
+        return pinA[_index];
     }
 
     
@@ -128,24 +126,32 @@ namespace prog3
 
     int Uno::analogRead(int _pin)
     {
-        return pinA[_pin].getValue();
+        unsigned int pin = unsigned(_pin);
+
+        return pinA[pin].getValue();
     }
 
     int Uno::digitalRead(int _pin)
     {
-        return pinD[_pin].getValue();
+        unsigned int pin = unsigned(_pin);
+
+        return pinD[pin].getValue();
     }
 
     void Uno::pinMode(int _pin, int _mode)
     {
-        pinD[_pin].setFunction(_mode);
+        unsigned int pin = unsigned(_pin);
+
+        pinD[pin].setFunction(_mode);
     }
 
     void Uno::analogWrite(int _pin, int _state)
     {
-        if(pinD[_pin].getFunction() == PWM)
+        unsigned int pin = unsigned(_pin);
+
+        if(pinD[pin].getFunction() == PWM)
         {
-            pinD[_pin].setValue(_state);
+            pinD[pin].setValue(_state);
         }
         else
         {
@@ -155,15 +161,17 @@ namespace prog3
 
     void Uno::digitalWrite(int _pin, int _state)
     {
-        if(pinD[_pin].getFunction() == OUTPUT)
+        unsigned int pin = unsigned(_pin);
+
+        if(pinD[pin].getFunction() == OUTPUT)
         {
-            pinD[_pin].setValue(_state);
+            pinD[pin].setValue(_state);
         }
-        else if(pinD[_pin].getFunction() == INPUT)
+        else if(pinD[pin].getFunction() == INPUT)
         {
             ui->print("[digitalWrite]: Cannot write to INPUT pin\n");
         }
-        else if(pinD[_pin].getFunction() == INPUT_PULLUP)
+        else if(pinD[pin].getFunction() == INPUT_PULLUP)
         {
             ui->print("[digitalWrite]: Cannot write to INPUT_PULLUP pin\n");
         }
@@ -174,7 +182,7 @@ namespace prog3
         ui = _ui;
         eeprom.setUI(ui);
         
-        int i;
+        unsigned int i;
         for(i = 0; i < pinD.size(); i++)
         {
             pinD[i].setUI(ui);
@@ -183,5 +191,17 @@ namespace prog3
         {
             pinA[i].setUI(ui);
         }
+    }
+
+    unsigned long Uno::seconds()
+    {
+        long millis = long(timer.millis());
+        return unsigned(millis);
+    }
+
+    unsigned long Uno::millis()
+    {
+        long millis = long(timer.millis() * 1000);
+        return unsigned(millis);
     }
 }

@@ -4,8 +4,6 @@
 #include <chrono>
 #include <string>
 
-using namespace std;
-
 namespace prog3
 {
     class Timer
@@ -14,17 +12,32 @@ namespace prog3
 
         double const DEFAULT_CLOCK_FREQUENCY = 16e6;
         double clock_frequency;
-        chrono::high_resolution_clock::time_point t_init;
+        std::chrono::high_resolution_clock::time_point t_init;
 
     public:   
         Timer();
         Timer(double clk_freq);
-
-        string getRealTime() const;
-        double getClockFrequency()const;
+        
+        /**
+         * @brief Retorna o tempo em segundos desde a criação do objeto
+         * 
+         * @return double Tempo em segundos
+         */
         double millis()const;
 
-        
+        /**
+         * @brief Retorna o tempo real RTC
+         * 
+         * @return std::string Tempo real
+         */
+        std::string getRealTime() const;
+
+        /**
+         * @brief Retorna a frequência do relógio
+         * 
+         * @return double Frequência
+         */
+        double getClockFrequency()const;     
     };
 }
 
