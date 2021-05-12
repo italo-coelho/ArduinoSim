@@ -7,7 +7,7 @@ UI ->       Classe para apresentar a interface para o usuário na linha
 #define UI_H
 
 #include "String.h"
-#include "EEPROM.h"
+//#include "EEPROM.h"
 #include <string>
 
 namespace prog3
@@ -33,7 +33,7 @@ namespace prog3
         private:
             static std::string console_str;
             
-            friend class EEPROM;
+            //friend class EEPROM;
     };
 }
 
