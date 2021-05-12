@@ -31,20 +31,22 @@ namespace prog3
             return temp_range(gerador);
 
         }
-        if(Tipo==PRESSAO)
+        else if(Tipo==PRESSAO)
         {   
             std::uniform_real_distribution<double> press_range(1010.0, 1050.0);
             return press_range(gerador);
             
         }
-        if(Tipo==UMIDADE)
+        else if(Tipo==UMIDADE)
         {   
             std::uniform_real_distribution<double> humidity_range(50.0, 100.0);
             return humidity_range(gerador);
             
         }
 
-        
+
+
+
     }
 
 
