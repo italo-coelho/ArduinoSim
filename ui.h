@@ -7,33 +7,77 @@ UI ->       Classe para apresentar a interface para o usuário na linha
 #define UI_H
 
 #include "String.h"
+<<<<<<< HEAD
 //#include "EEPROM.h"
+=======
+
+>>>>>>> 70a818cb85d25b0bde8ff8c88b39d19a05f08d4d
 #include <string>
+#include <vector>
 
 namespace prog3
 {
     class UI
     {
         public:
+            /**
+             * @brief Imprime na tela a mensagem de ajuda
+             * 
+             */
             void help();
+
+            /**
+             * @brief Limpa a tela do usuário
+             * 
+             */
             void clear();
+
+            /**
+             * @brief Imprime na tela o cabeçalho do programa
+             * 
+             */
             void header();
+
+            /**
+             * @brief Imprime na tela o console com os comandos e saídas
+             * 
+             */
             void console();
             
-            
-            static void print(std::string _text);
+            /**
+             * @brief Adiciona um texto no console e imprime a interface
+             * 
+             * @param _text 
+             */
+            void print(std::string _text);
+
+            /**
+             * @brief Limpa o console
+             * 
+             */
             void clearConsole();
 
+            /**
+             * @brief Espera por um comando no usuário no terminal
+             * 
+             * @return String 
+             */
             String readCommand();
 
-            // void arduinoPins();
+            /**
+             * @brief Limpa a tela e depois imprime o cabeçalho e o console
+             * 
+             */
             void show();
 
-            // void setArduino();
         private:
+<<<<<<< HEAD
             static std::string console_str;
             
             //friend class EEPROM;
+=======
+            std::string console_str;
+>>>>>>> 70a818cb85d25b0bde8ff8c88b39d19a05f08d4d
     };
 }
 

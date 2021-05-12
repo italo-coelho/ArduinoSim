@@ -1,6 +1,6 @@
 TARGET=teste
 CXX=g++
-CXXFLAGS=-std=c++17 -Wall -g
+CXXFLAGS=-std=c++17 -Wall -Wextra -g
 
 SRCS=$(TARGET).cpp pino.cpp gpio.cpp EEPROM.cpp ui.cpp Uno.cpp String.cpp supply.cpp Timer.cpp
 HPP=$(TARGET).hpp gpio.h EEPROM.h UNO.h supply.h pino.h String.h ui.h Timer.h

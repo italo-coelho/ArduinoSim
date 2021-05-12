@@ -19,7 +19,7 @@ namespace prog3
     {
         if(str.find(_search) != std::string::npos)
         {
-            return str.find(_search);
+            return int(str.find(_search));
         }
         else
         {
@@ -43,8 +43,8 @@ namespace prog3
     {
         int number = 0;
         std::string substr;
-        int i = 0;
-
+        
+        unsigned int i = 0;
         for(i = 0; i < str.length(); i++)
         {
             if(str[i] >= '0' && str[i] <= '9')
@@ -63,7 +63,7 @@ namespace prog3
 
     char String::betweenQuotes()
     {
-        int i;
+        unsigned int i;
         for(i = 0; i < str.length(); i++)
         {
             if(str[i] == '\"' || str[i] == '\'') 
@@ -88,18 +88,20 @@ namespace prog3
     String String::subString(int _begining, int _end)
     {
         String sub;
+        int len = int(str.length());
 
-        if(_end == -2)
+        if(_end < 0)
         {
-            _end = str.length() - 1;
+            _end = len - 1;
         }
 
-        if(_begining >= 0 && _end < str.length())
+
+        if(_begining >= 0 && _end < len)
         {
             if(_begining < _end)
             {
-                int i;
-                for(i = _begining; i <= _end; i++)
+                unsigned int i;
+                for(i = unsigned(_begining); i <= unsigned(_end); i++)
                 {
                     sub.append(str[i]); 
                 }

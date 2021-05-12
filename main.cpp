@@ -1,15 +1,6 @@
 #include "ui.h"
 #include "UNO.h"
-#include "gpio.h"
-#include "pino.h"
-#include "EEPROM.h"
 #include "String.h"
-
-#include <cctype>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
 
 using namespace prog3;
 
@@ -22,6 +13,7 @@ int main()
     arduino.setUI(&ui);     //Especifica a classe responsável por imprimir as informações para o usuário
 
     ui.show();              //Mostra a interface
+    ui.print("Bem-Vindo ao Simulador de Arduino! Digite 'ajuda' para ver a lista de comandos.\n\n");
     
     do
     {
@@ -33,6 +25,16 @@ int main()
         if(command.has("ajuda") || command.has("Ajuda") || command.has("help"))
         {
             ui.help();
+        }
+
+        if(command.has("millis"))
+        {
+            ui.print("Milliseconds = " + std::to_string(arduino.millis()) + "\n");
+        }
+
+        if(command.has("seconds"))
+        {
+            ui.print("Seconds = " + std::to_string(arduino.seconds()) + "\n");
         }
 
         if(command.has("EEPROM") || command.has("eeprom"))

@@ -3,12 +3,10 @@
 
 namespace prog3
 {
-    //Function
-    #define S_5V    1
-    #define S_3V3   2
-    #define S_VIN   3
-    #define S_GND   4
-
+    enum S_Function { S_5V    = 1,
+                    S_3V3   = 2,
+                    S_VIN   = 3,
+                    S_GND   = 4};
 
     class supply:pino
     {
@@ -16,14 +14,41 @@ namespace prog3
             supply();
             supply(int _function);
 
+            /**
+             * @brief Retorna o tipo do pino de alimentação
+             * 
+             * @return int Tipo de Alimentação
+             */
             int getFunction();      
 
+            /**
+             * @brief Retorna a corrente no pino
+             * 
+             * @return double Corrente no pino
+             */
             double getCurrent();
             
+            /**
+             * @brief Define o tipo do pino de alimentação
+             * 
+             * @param _function Tipo de Alimentação
+             */
             void setFunction(int _function);
 
+            /**
+             * @brief Define a corrente máxima suportada pelo pino
+             * 
+             * @param _maxCurrent Corrente máxima
+             */
             void setMaxCurrent(int _maxCurrent);
+
+            /**
+             * @brief Define a carga conectada no pino
+             * 
+             * @param _load Carga(em Ohms)
+             */
             void setLoad(double _load);
+            
         private:
             int function;
             int maxCurrent;

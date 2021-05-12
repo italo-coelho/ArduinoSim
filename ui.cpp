@@ -2,7 +2,6 @@
 #include "String.h"
 
 #include <string>
-#include <iomanip>
 #include <iostream>
 
 namespace prog3
@@ -17,7 +16,6 @@ namespace prog3
     {
         clear();
         header();
-        // pinStatus();
         console();
     }
 
@@ -33,11 +31,6 @@ namespace prog3
         std::cout << "  # # #   # #   #  #  #   #  #  #  # #  #   # " << std::endl;
         std::cout << " #     #  #  #  ###    ###   #  #    #   ###  " << std::endl;
         // std::cout << "#----------------------------------------------#" << std::endl;
-
-        // std::cout << "    @     @@@   @@@   @   @  @  @    @   @@@  " << std::endl;
-        // std::cout << "   @ @    @  @  @  @  @   @  @  @ @  @  @   @ " << std::endl;
-        // std::cout << "  @ @ @   @ @   @  @  @   @  @  @  @ @  @   @ " << std::endl;
-        // std::cout << " @     @  @  @  @@@    @@@   @  @    @   @@@  " << std::endl;
 
         std::cout << std::endl;
     }
@@ -105,17 +98,4 @@ namespace prog3
         console_str = "";
         show();
     }
-
-    // void UI::pinStatus()
-    // {
-    //     std::cout << "----------------------------------------" << std::endl;
-    //     for(auto i = 0; i < 7; i++)
-    //     {
-    //         std::cout << std::setw(20) << "DIGITAIS" << std::setw(20) << "ANALÓGICOS" << std::endl;
-    //         if(i < 6)
-    //         {
-    //             std::cout << std::setw(20) << "D" << i << " = " << std::to_string(pinD[i].getValue()) << std::setw(20) << "A" << i << " = " << std::to_string(uno.pinA[i].getValue()) << std::endl;
-    //         }
-    //     }
-    // }
 }
