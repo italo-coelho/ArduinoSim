@@ -7,7 +7,6 @@ UNO ->   Classe para representar o Arduino UNO
 #define UNO_H
 
 #include <vector>
-#include <string>
 
 #include "ui.h"
 #include "pino.h"
@@ -50,13 +49,6 @@ namespace prog3{
          * @return pino Objeto do tipo pino analógico
          */
         pino getPinA(int index);
-
-        /**
-         * @brief Retorna a data e hora
-         * 
-         * @return std::string com a data e hora atual
-         */
-        std::string getRTC() const;
 
         /**
          * @brief Lê o valor do pino Analógico
@@ -144,8 +136,28 @@ namespace prog3{
          */
         unsigned long millis();
 
+        /**
+         * @brief Conecta o sensor no pino
+         * 
+         * @param _pin Pino
+         * @param _type Tipo do sensor 
+         * @param _protocol Protocolo do Sensor (opcional - padrao = SPI)
+         */
         void connectSensor(int _pin, int _type, int _protocol = SPI);
+
+        /**
+         * @brief Desconecta o sensor do pino
+         * 
+         * @param _pin Pino
+         */
         void disconnectSensor(int _pin);
+
+        /**
+         * @brief Retorna a data e hora
+         * 
+         * @return std::string com a data e hora atual
+         */
+        std::string getRTC() const;
     };
 }
 

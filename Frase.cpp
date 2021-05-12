@@ -109,7 +109,7 @@ namespace prog3
         return sub;
     }
 
-    std::string Frase::cppFrase()
+    std::string Frase::cppString()
     {
         return str;
     }

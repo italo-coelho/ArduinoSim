@@ -19,7 +19,7 @@ int main()
     {
         ui.print("-> ");
         command = ui.readCommand();
-        ui.print(command.cppFrase() + "\n");   
+        ui.print(command.cppString() + "\n");   
     
         if(command.has("ajuda") || command.has("Ajuda") || command.has("help"))
         {
@@ -35,7 +35,7 @@ int main()
         {
             ui.print("Seconds = " + std::to_string(arduino.seconds()) + "\n");
         }
-        
+
         if (command.has("getRTC"))
         {
             ui.print(arduino.getRTC());
@@ -180,7 +180,6 @@ int main()
         {
             ui.clearConsole();
         }
-        
     }
     while(!command.has("exit") && !command.has("sair"));
  

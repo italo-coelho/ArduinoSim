@@ -3,7 +3,6 @@
 #include "pino.h"
 #include "gpio.h"
 
-
 namespace prog3
 {
 
@@ -211,6 +210,11 @@ namespace prog3
         return unsigned(millis);
     }
 
+    std::string UNO::getRTC() const
+    {
+        return timer.getRealTime();
+    }
+    
     void UNO::connectSensor(int _pin, int _type, int _protocol)
     {
         if(_pin < 0 || _pin > 5)
@@ -262,10 +266,4 @@ namespace prog3
             ui->print("[disconnectSensor]: The pin is already Free\n");
         }
     }
-
-    std::string UNO::getRTC() const
-    {
-        return timer.getRealTime();
-    }
-
 }

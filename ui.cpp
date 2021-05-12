@@ -9,7 +9,7 @@ namespace prog3
     void UI::clear()
     {
         std::cout << std::flush;
-        std::system("clear");
+        // std::system("clear");
     }
 
     void UI::show()
@@ -57,6 +57,7 @@ namespace prog3
         help_str += "\n";
         help_str += "millis()                     -> retorna o tempo em milissegundos desde a execução do programa\n";
         help_str += "seconds()                    -> retorna o tempo em milissegundos desde a execução do programa\n";
+        help_str += "getRTC()                     -> retorna a data e hora real\n";
         help_str += "\n";
         print(help_str);
     }

@@ -79,7 +79,7 @@ namespace prog3
              * 
              * @return std::string com os dados da Frase
              */
-            std::string cppFrase();
+            std::string cppString();
     };
 }
 
