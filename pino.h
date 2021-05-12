@@ -2,6 +2,7 @@
 #define PINO_H
 
 #include "gpio.h"
+#include "supply.h"
 #include "Sensor.h"
 #include <string>
 
@@ -24,9 +25,11 @@ namespace prog3
         std::string label;                          //Nome do pino
         gpio port;
         Sensor* sensor;
+        supply power;
 
     public:
         pino(gpio _port);
+        pino(supply _power);
 
         /**
          * @brief Retorna o tipo do Pino

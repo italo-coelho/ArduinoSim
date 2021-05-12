@@ -8,14 +8,6 @@ namespace prog3
 
     UNO::UNO()
     {
-        /*========================
-                    GPIOS
-        ==========================*/
-
-        /*========================
-                    UART
-        ==========================*/
-
         //pino 0, GPIO 0, RXD (UART)
         gpio pino_0(0,INPUT,UART_RX);
         UNO::pinD.push_back(pino_0);
@@ -29,10 +21,6 @@ namespace prog3
             gpio pino(i);
             UNO::pinD.push_back(pino);
         }   
-
-        /*========================
-                    SPI
-        ==========================*/
 
         //pino 10, GPIO 10,   SPI_CS
         gpio pino_10(10, INPUT, SPI_CS);
@@ -50,10 +38,6 @@ namespace prog3
         gpio pino_13(13,OUTPUT,SPI_SCLK);
         UNO::pinD.push_back(pino_13);    
    
-        /*========================
-                    I2C
-        ==========================*/
-
         for(int i=0 ; i < 4; i++)
         {
             gpio pino(i + 14, ANALOG);
@@ -68,30 +52,26 @@ namespace prog3
         //pino 1, A5,   I2C_SCK
         gpio pino_A5(19, ANALOG, I2C_SCK);
         UNO::pinA.push_back(pino_A5);
-
-        /*========================
-                   SUPPLY
-        ==========================*/
         
-        // //pino 16, VIN
-        // supply pino_16(S_VIN);
-        // UNO::pinS.push_back(pino_16); 
+        //pino 16, VIN
+        supply pino_16(S_VIN);
+        UNO::pinS.push_back(pino_16); 
 
-        // //pino 17, GND
-        // gpio pino_17(S_GND);
-        // UNO::pinS.push_back(pino_17);
+        //pino 17, GND
+        supply pino_17(S_GND);
+        UNO::pinS.push_back(pino_17);
         
-        // //pino 18, GND
-        // gpio pino_18(S_GND);
-        // UNO::pinS.push_back(pino_18);         
+        //pino 18, GND
+        supply pino_18(S_GND);
+        UNO::pinS.push_back(pino_18);         
 
-        // //pino 19, 5V
-        // gpio pino_19(S_5V);
-        // UNO::pinS.push_back(pino_19);         
+        //pino 19, 5V
+        supply pino_19(S_5V);
+        UNO::pinS.push_back(pino_19);         
 
-        // //pino 20, 3V3
-        // gpio pino_20(S_3V3);
-        // UNO::pinS.push_back(pino_20);
+        //pino 20, 3V3
+        supply pino_20(S_3V3);
+        UNO::pinS.push_back(pino_20);
 
     }
 
@@ -245,6 +225,15 @@ namespace prog3
             UNO::sensor.push_back(_sensor);
             pinA[pin].setSensor(&sensor.back());
             pinA[pin].setStatus(OCUPADO);
+            std::string tipo;
+            switch (_type)
+            {
+                case TEMPERATURA: tipo = "TEMP"; break;
+                case UMIDADE: tipo = "HUMIDITY"; break;
+                case PRESSAO: tipo = "PRESSURE"; break;
+                default: tipo = "";
+            }
+            ui->print("[connectSensor]: " + tipo + " Sensor successfully attached to pin A" + std::to_string(pin) + "\n");
         }
         else if(pinA[pin].getStatus() == OCUPADO)
         {            
@@ -265,6 +254,7 @@ namespace prog3
         {            
             pinA[pin].setSensor(nullptr);
             pinA[pin].setStatus(DISPONIVEL);
+            ui->print("[disconnectSensor]: Sensor successfully disconnected from pin A" + std::to_string(pin) + "\n");
         }
         else if(pinA[pin].getStatus() == DISPONIVEL)
         {            

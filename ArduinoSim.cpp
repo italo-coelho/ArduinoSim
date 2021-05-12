@@ -1,13 +1,13 @@
 #include "ui.h"
 #include "UNO.h"
-#include "String.h"
+#include "Frase.h"
 
 using namespace prog3;
 
 int main()
 {
     UI ui;                  //Objeto de Interface - Linha de Comando
-    String command;         //Objeto de manipulação de Strings - Comandos
+    Frase command;          //Objeto de manipulação de Frases - Comandos
     UNO arduino;            //Objeto Arduino Uno
 
     arduino.setUI(&ui);     //Especifica a classe responsável por imprimir as informações para o usuário
@@ -17,10 +17,9 @@ int main()
     
     do
     {
-        // std::cout << "-> ";
         ui.print("-> ");
         command = ui.readCommand();
-        ui.print(command.cppString() + "\n");   
+        ui.print(command.cppFrase() + "\n");   
     
         if(command.has("ajuda") || command.has("Ajuda") || command.has("help"))
         {
@@ -53,7 +52,6 @@ int main()
                 char data = arduino.EEPROMread(pos);
                 if(data != '\0')
                 {
-                    // std::cout << "EEPROM[" << pos << "] = " << data << std::endl;
                     ui.print("EEPROM[" + std::to_string(pos) + "] = " + data + "\n");
                 }
             }
@@ -98,8 +96,8 @@ int main()
 
         if(command.has("analogWrite"))
         {   
-            String pinStr(command.subString(0, command.indexOf(",")));
-            String valueStr(command.subString(command.indexOf(",")));
+            Frase pinStr(command.subFrase(0, command.indexOf(",")));
+            Frase valueStr(command.subFrase(command.indexOf(",")));
 
             int pin = pinStr.findNumber();
             int value = valueStr.findNumber();
@@ -111,14 +109,12 @@ int main()
         if(command.has("analogRead"))
         {   
             int pin = command.findNumber();            
-            // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
             ui.print("Pino[A" + std::to_string(pin) + "] = " + std::to_string(arduino.analogRead(pin)) + "\n");
         }
 
         if(command.has("digitalRead"))
         {   
             int pin = command.findNumber();
-            // std::cout <<"Pino[" << pin << "] = " << /*estado do pino << */"\n";
             if(arduino.digitalRead(pin) == 1023)
             {
                 ui.print("Pino[D" + std::to_string(pin) + "] = " + "HIGH" + "\n");

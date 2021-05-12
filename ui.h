@@ -6,7 +6,7 @@ UI ->       Classe para apresentar a interface de usuário na linha
 #ifndef UI_H
 #define UI_H
 
-#include "String.h"
+#include "Frase.h"
 
 #include <string>
 #include <vector>
@@ -56,9 +56,9 @@ namespace prog3
             /**
              * @brief Espera por um comando no usuário no terminal
              * 
-             * @return String 
+             * @return Frase 
              */
-            String readCommand();
+            Frase readCommand();
 
             /**
              * @brief Limpa a tela e depois imprime o cabeçalho e o console

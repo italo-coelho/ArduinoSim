@@ -9,6 +9,11 @@ namespace prog3
         port = _port;
     }
 
+    pino::pino(supply _power)
+    {
+        power = _power;
+    }
+
     int pino::getTipo()
     {
         sensor = nullptr;

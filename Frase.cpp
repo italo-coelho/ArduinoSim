@@ -1,21 +1,20 @@
-#include "String.h"
+#include "Frase.h"
 
 #include <sstream>
-#include <iostream>
 
 namespace prog3
 {
-    String::String(std::string _str)
+    Frase::Frase(std::string _str)
     {
         str = _str;
     }
 
-    String::String()
+    Frase::Frase()
     {
         str = "";
     }
 
-    int String::indexOf(std::string _search)
+    int Frase::indexOf(std::string _search)
     {
         if(str.find(_search) != std::string::npos)
         {
@@ -27,7 +26,7 @@ namespace prog3
         }
     }
 
-    bool String::has(std::string _search)
+    bool Frase::has(std::string _search)
     {
         if(str.find(_search) != std::string::npos)
         {
@@ -39,7 +38,7 @@ namespace prog3
         }
     }
 
-    int String::findNumber()
+    int Frase::findNumber()
     {
         int number = 0;
         std::string substr;
@@ -53,15 +52,13 @@ namespace prog3
             }
         }
 
-        // sscanf(substr.c_str(), "%d", &number);
-
         std::stringstream stream(substr);
         stream >> number;
 
         return number;
     }
 
-    char String::betweenQuotes()
+    char Frase::betweenQuotes()
     {
         unsigned int i;
         for(i = 0; i < str.length(); i++)
@@ -75,19 +72,19 @@ namespace prog3
         return '\"';
     }
 
-    void String::append(std::string _add)
+    void Frase::append(std::string _add)
     {
         str += _add;
     }
 
-    void String::append(char _add)
+    void Frase::append(char _add)
     {
         str += _add;
     }
 
-    String String::subString(int _begining, int _end)
+    Frase Frase::subFrase(int _begining, int _end)
     {
-        String sub;
+        Frase sub;
         int len = int(str.length());
 
         if(_end < 0)
@@ -112,7 +109,7 @@ namespace prog3
         return sub;
     }
 
-    std::string String::cppString()
+    std::string Frase::cppFrase()
     {
         return str;
     }

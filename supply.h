@@ -4,11 +4,11 @@
 namespace prog3
 {
     enum S_Function { S_5V    = 1,
-                    S_3V3   = 2,
-                    S_VIN   = 3,
-                    S_GND   = 4};
+                      S_3V3   = 2,
+                      S_VIN   = 3,
+                      S_GND   = 4};
 
-    class supply:pino
+    class supply
     {
         public:
             supply();
@@ -40,7 +40,7 @@ namespace prog3
              * 
              * @param _maxCurrent Corrente máxima
              */
-            void setMaxCurrent(int _maxCurrent);
+            void setMaxCurrent(double _maxCurrent);
 
             /**
              * @brief Define a carga conectada no pino
