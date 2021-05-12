@@ -3,6 +3,7 @@
 #include "pino.h"
 #include "gpio.h"
 
+
 namespace prog3
 {
 
@@ -261,4 +262,10 @@ namespace prog3
             ui->print("[disconnectSensor]: The pin is already Free\n");
         }
     }
+
+    std::string UNO::getRTC() const
+    {
+        return timer.getRealTime();
+    }
+
 }

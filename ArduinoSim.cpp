@@ -35,6 +35,11 @@ int main()
         {
             ui.print("Seconds = " + std::to_string(arduino.seconds()) + "\n");
         }
+        
+        if (command.has("getRTC"))
+        {
+            ui.print(arduino.getRTC());
+        }
 
         if(command.has("EEPROM") || command.has("eeprom"))
         {
@@ -175,6 +180,7 @@ int main()
         {
             ui.clearConsole();
         }
+        
     }
     while(!command.has("exit") && !command.has("sair"));
  
