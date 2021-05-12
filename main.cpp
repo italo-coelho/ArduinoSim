@@ -129,7 +129,12 @@ int main()
             }
         }
 
-        if(command.has("connectSensor") || command.has("attachSensor"))
+        if(command.has("disconnectSensor") || command.has("dettachSensor"))
+        {
+            int pin = command.findNumber();
+            arduino.disconnectSensor(pin);
+        }
+        else if(command.has("connectSensor") || command.has("attachSensor"))
         {
             int pin = command.findNumber();
             
@@ -162,7 +167,7 @@ int main()
             }
             if(type == 0)
             {
-                ui.print("[connectSensor]: Invalid Sensor Type");
+                ui.print("[connectSensor]: Invalid Sensor Type\n");
             }
             else
             {

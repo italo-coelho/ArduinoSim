@@ -24,7 +24,7 @@ namespace prog3
 
     double Sensor::getValue() const
     {   
-        std::default_random_engine gerador;
+        std::random_device gerador;
 
         if(Tipo==TEMPERATURA)
         {   

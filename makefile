@@ -2,8 +2,8 @@ TARGET=main
 CXX=g++
 CXXFLAGS=-std=c++17 -Wall -Wextra -g
 
-SRCS=$(TARGET).cpp pino.cpp gpio.cpp EEPROM.cpp ui.cpp Uno.cpp String.cpp Timer.cpp
-HPP=$(TARGET).hpp gpio.h EEPROM.h UNO.h supply.h pino.h String.h ui.h Timer.h
+SRCS=$(TARGET).cpp pino.cpp gpio.cpp EEPROM.cpp ui.cpp Uno.cpp String.cpp Sensor.cpp Timer.cpp
+HPP=$(TARGET).hpp gpio.h EEPROM.h UNO.h supply.h pino.h String.h ui.h Sensor.h Timer.h
 OBJS=$(subst %.cpp, %.o,$(SRCS))
 
 all:$(TARGET)

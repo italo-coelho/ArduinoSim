@@ -70,6 +70,9 @@ namespace prog3
         help_str += "digitalWrite(n, estado)      -> define o estado do pino on/off, onde 'n' é o número do pino e 'estado' pode ser HIGH ou LOW\n";
         help_str += "analogWrite(n, intensidade)  -> define o estado do pino PWM, onde 'n' é o número do pino e 'intensidade' pode ser um valor de 0 a 255\n";
         help_str += "\n";
+        help_str += "connectSensor(pin, type)     -> conecta o sensor do 'type' (TEMP/HUMIDITY/PRESSURE) no pino analógico 'pin'\n";
+        help_str += "disconnectSensor(pin)        -> desconecta o sensor do pino analógico 'pin'\n";
+        help_str += "\n";
         help_str += "EEPROM.begin(n)              -> inicializa a memória EEPROM, onde 'n' é o tamanho da memória\n";
         help_str += "EEPROM.read(pos)             -> retorna o caracter armazenado na posição 'pos'\n";
         help_str += "EEPROM.write(pos, \"c\")       -> grava o caracter na memória, na posiçõa 'pos' e o caracter deve estar entre aspas duplas ou simples\n";

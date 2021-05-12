@@ -58,6 +58,7 @@ namespace prog3
         {
             gpio pino(i + 14, ANALOG);
             UNO::pinA.push_back(pino);
+            pinA.back().setStatus(DISPONIVEL);
         }
 
         //pino 1, A4,   I2C_SDA
@@ -126,6 +127,11 @@ namespace prog3
 
     double UNO::analogRead(int _pin)
     {
+        if(_pin < 0 || _pin > 5)
+        {
+            ui->print("[analogRead]: Invalid Pin Number");
+            return 0;
+        }
         unsigned int pin = unsigned(_pin);
 
         return pinA[pin].getValue();
@@ -133,6 +139,12 @@ namespace prog3
 
     int UNO::digitalRead(int _pin)
     {
+        if(_pin < 0 || _pin > 13)
+        {
+            ui->print("[digitalRead]: Invalid Pin Number\n");
+            return 0;
+        }
+
         unsigned int pin = unsigned(_pin);
 
         return int(pinD[pin].getValue());
@@ -140,6 +152,12 @@ namespace prog3
 
     void UNO::pinMode(int _pin, int _mode)
     {
+        if(_pin < 0 || _pin > 13)
+        {
+            ui->print("[pinMode]: Invalid Pin Number\n");
+            return;
+        }
+        
         unsigned int pin = unsigned(_pin);
 
         pinD[pin].setFunction(_mode);
@@ -147,6 +165,13 @@ namespace prog3
 
     void UNO::analogWrite(int _pin, int _state)
     {
+        
+        if(_pin < 0 || _pin > 13)
+        {
+            ui->print("[analogWrite]: Invalid Pin Number");
+            return;
+        }
+        
         unsigned int pin = unsigned(_pin);
 
         if(pinD[pin].getFunction() == PWM)
@@ -155,7 +180,7 @@ namespace prog3
         }
         else
         {
-            ui->print("[analogWrite]: Cannot write to non-PWM pin\n");
+            ui->print("[analogWrite]: Cannot analog-write to non-PWM pin\n");
         }
     }
 
@@ -207,6 +232,12 @@ namespace prog3
 
     void UNO::connectSensor(int _pin, int _type, int _protocol)
     {
+        if(_pin < 0 || _pin > 5)
+        {
+            ui->print("[connectSensor]: Invalid Pin Number\n");
+            return;
+        }
+
         unsigned int pin = unsigned(_pin);
         if(pinA[pin].getStatus() == DISPONIVEL)
         {            
@@ -218,6 +249,26 @@ namespace prog3
         else if(pinA[pin].getStatus() == OCUPADO)
         {            
             ui->print("[connectSensor]: The pin is already Occupied\n");
+        }
+    }
+
+    void UNO::disconnectSensor(int _pin)
+    {
+        if(_pin < 0 || _pin > 5)
+        {
+            ui->print("[disconnectSensor]: Invalid Pin Number\n");
+            return;
+        }
+
+        unsigned int pin = unsigned(_pin);
+        if(pinA[pin].getStatus() == OCUPADO)
+        {            
+            pinA[pin].setSensor(nullptr);
+            pinA[pin].setStatus(DISPONIVEL);
+        }
+        else if(pinA[pin].getStatus() == DISPONIVEL)
+        {            
+            ui->print("[disconnectSensor]: The pin is already Free\n");
         }
     }
 }

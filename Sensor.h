@@ -1,7 +1,6 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-
 namespace prog3
 {   
     enum protocolo {SPI = 1, I2C = 2, UART = 3};
@@ -10,7 +9,6 @@ namespace prog3
     class Sensor
     {
     private:
-    
         int Tipo;
         int Protocolo;
 

@@ -137,6 +137,7 @@ namespace prog3{
         unsigned long millis();
 
         void connectSensor(int _pin, int _type, int _protocol = SPI);
+        void disconnectSensor(int _pin);
     };
 }
 
