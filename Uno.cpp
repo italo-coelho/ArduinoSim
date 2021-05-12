@@ -95,6 +95,11 @@ namespace prog3
 
     }
 
+    double Uno::millis()
+    {
+        return timer.millis();
+    }
+
     pino Uno::getPinD(int index)
     {
         return pinD[index];

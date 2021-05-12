@@ -40,6 +40,8 @@ namespace prog3{
         void EEPROMwrite(int _pos, char _data);
         char EEPROMread(int _pos);
 
+        double millis();
+
         void setUI(UI* _ui);
     };
 }
