@@ -22,6 +22,7 @@ namespace prog3
         string getRealTime() const;
         double getClockFrequency()const;
         
+        
     };
 }
 
