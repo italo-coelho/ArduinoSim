@@ -43,12 +43,16 @@ namespace prog3
             return humidity_range(gerador);
             
         }
-
-
-
-
     }
 
+    int Sensor::getTipo() const {return Tipo;}
+
+    int Sensor::getProtocolo() const {return Protocolo;}
+
+    void Sensor::setTipo(int tipo){Tipo=tipo;}
+
+    void Sensor::setProtocolo(int protocolo){Protocolo=protocolo;}
+        
 
 
 }

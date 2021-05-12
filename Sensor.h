@@ -27,6 +27,8 @@ namespace prog3
         int getTipo()const;
         int getProtocolo()const;
 
+        void setTipo(int tipo);
+        void setProtocolo(int protocolo);
 };
 
 }
