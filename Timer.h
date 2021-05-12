@@ -11,16 +11,16 @@ namespace prog3
     class Timer
     {
     private:
-    
-        double const DEFAULT_CLOCK_FREQUENCY = 16e4;
-        time_t clock_frequency;
+
+        double const DEFAULT_CLOCK_FREQUENCY = 16e6;
+        double clock_frequency;
 
     public:   
         Timer();
-        Timer(time_t clk_freq);
+        Timer(double clk_freq);
 
         string getRealTime() const;
-        
+        double getClockFrequency()const;
         
     };
 }
