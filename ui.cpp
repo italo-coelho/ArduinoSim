@@ -9,7 +9,7 @@ namespace prog3
     void UI::clear()
     {
         std::cout << std::flush;
-        // std::system("clear");
+        std::system("clear");
     }
 
     void UI::show()
