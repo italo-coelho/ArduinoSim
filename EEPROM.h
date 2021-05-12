@@ -1,3 +1,8 @@
+/*
+EEPROM ->   Classe para armazenamento de dados na memória
+*/
+
+
 #ifndef EEPROM_H
 #define EEPROM_H
 

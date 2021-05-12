@@ -8,7 +8,7 @@ int main()
 {
     UI ui;                  //Objeto de Interface - Linha de Comando
     String command;         //Objeto de manipulação de Strings - Comandos
-    Uno arduino;            //Objeto Arduino Uno
+    UNO arduino;            //Objeto Arduino Uno
 
     arduino.setUI(&ui);     //Especifica a classe responsável por imprimir as informações para o usuário
 

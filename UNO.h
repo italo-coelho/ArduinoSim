@@ -1,3 +1,8 @@
+/*
+UNO ->   Classe para representar o Arduino UNO
+*/
+
+
 #ifndef UNO_H
 #define UNO_H
 
@@ -9,7 +14,7 @@
 
 namespace prog3{
 
-    class Uno 
+    class UNO 
     {
     private:
         std::vector<pino> pinD;
@@ -23,7 +28,7 @@ namespace prog3{
         UI* ui;
         
     public:
-        Uno();
+        UNO();
 
         /**
          * @brief Retorna os pinos digitais
@@ -114,7 +119,7 @@ namespace prog3{
         /**
          * @brief Retorna o tempo em segundos
          * @details Desde o início do programa, ou seja, desde a
-         *          construção do objeto Uno
+         *          construção do objeto UNO
          * @return unsigned long Tempo em segundos
          */
         unsigned long seconds();
@@ -122,7 +127,7 @@ namespace prog3{
         /**
          * @brief Retorna o tempo em millisegundos
          * @details Desde o início do programa, ou seja, desde a
-         *          construção do objeto Uno
+         *          construção do objeto UNO
          * @return unsigned long Tempo em millisegundos
          */
         unsigned long millis();
