@@ -1,5 +1,5 @@
 /*
-UI ->       Classe para apresentar a interface de usuário na linha
+UI ->       Classe para apresentar a interface para o usuário na linha
             de comando e extrair os comandos digitados pelo mesmo
 */
 
@@ -7,11 +7,6 @@ UI ->       Classe para apresentar a interface de usuário na linha
 #define UI_H
 
 #include "String.h"
-<<<<<<< HEAD
-//#include "EEPROM.h"
-=======
-
->>>>>>> 70a818cb85d25b0bde8ff8c88b39d19a05f08d4d
 #include <string>
 #include <vector>
 
@@ -71,13 +66,7 @@ namespace prog3
             void show();
 
         private:
-<<<<<<< HEAD
-            static std::string console_str;
-            
-            //friend class EEPROM;
-=======
             std::string console_str;
->>>>>>> 70a818cb85d25b0bde8ff8c88b39d19a05f08d4d
     };
 }
 

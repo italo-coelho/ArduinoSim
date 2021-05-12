@@ -18,11 +18,11 @@ int main()
     cout << "Corrente: " << porta1.getCurrent()*1000 << "mA" << endl;
     cout << "Potencia: " << porta1.getPower()*1000 << "mW" << endl;
 
-    Uno arduino;
+    UNO arduino;
     UI ui;
     arduino.setUI(&ui);
 
-    cout<<arduino.millis()<<endl;   
+    cout<<"millis =" <<arduino.millis()<<endl;   
     
     
 

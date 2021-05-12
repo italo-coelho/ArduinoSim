@@ -1,4 +1,4 @@
-TARGET=teste
+TARGET=main
 CXX=g++
 CXXFLAGS=-std=c++17 -Wall -Wextra -g
 
