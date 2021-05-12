@@ -74,6 +74,9 @@ namespace prog3
         help_str += "EEPROM.read(pos)             -> retorna o caracter armazenado na posição 'pos'\n";
         help_str += "EEPROM.write(pos, \"c\")       -> grava o caracter na memória, na posiçõa 'pos' e o caracter deve estar entre aspas duplas ou simples\n";
         help_str += "\n";
+        help_str += "millis()                     -> retorna o tempo em milissegundos desde a execução do programa\n";
+        help_str += "seconds()                    -> retorna o tempo em milissegundos desde a execução do programa\n";
+        help_str += "\n";
         print(help_str);
     }
  

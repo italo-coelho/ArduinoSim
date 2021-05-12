@@ -5,11 +5,13 @@ namespace prog3
 
     pino::pino(gpio _port)
     {
+        sensor = nullptr;
         port = _port;
     }
 
     int pino::getTipo()
     {
+        sensor = nullptr;
         return tipo;
     }
 
@@ -42,7 +44,15 @@ namespace prog3
     }
 
     int pino::getPin() {return port.getPin();}
-    int pino::getValue(){return port.getValue();}
+    double pino::getValue()
+    {
+        if(sensor != nullptr )
+        {
+            return sensor->getValue();
+        }
+
+        return port.getValue();
+    }
     int pino::getFunction(){return port.getFunction();}
     int pino::getProtocol(){return port.getProtocol();}
     void pino::setUI(UI* _ui) {port.setUI(_ui);}
@@ -50,4 +60,14 @@ namespace prog3
     void pino::setValue(int _value) { port.setValue(_value);}
     void pino::setFunction(int _function) {port.setFunction(_function);}
     void pino::setProtocol(int _protocol) {port.setProtocol(_protocol);}
+
+    void pino::setSensor(Sensor* _sensor)
+    {
+        sensor = _sensor;
+    }
+
+    Sensor* pino::getSensor()
+    {
+        return sensor;
+    }
 }

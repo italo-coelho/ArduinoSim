@@ -2,6 +2,7 @@
 #define PINO_H
 
 #include "gpio.h"
+#include "Sensor.h"
 #include <string>
 
 namespace prog3
@@ -22,6 +23,7 @@ namespace prog3
         int N_pino;                                 //numeracao do pino
         std::string label;                          //Nome do pino
         gpio port;
+        Sensor* sensor;
 
     public:
         pino(gpio _port);
@@ -81,9 +83,9 @@ namespace prog3
         /**
          * @brief Retorna a leitura do pino
          * 
-         * @return int Valor da Leitura
+         * @return double Valor da Leitura
          */
-        int getValue();
+        double getValue();
 
         /**
          * @brief Retorna a função do pino
@@ -133,6 +135,20 @@ namespace prog3
          * @param _protocol Protocolo do Pino
          */
         void setProtocol(int _protocol);
+
+        /**
+         * @brief Define o objeto sensor conectado ao pino
+         * 
+         * @param _sensor Ponteiro para o objeto sensor
+         */
+        void setSensor(Sensor* _sensor);
+
+        /**
+         * @brief Retorna o objeto sensor conectado
+         * 
+         * @return Sensor* Ponteiro para o sensor conectado
+         */
+        Sensor* getSensor();
 
     };
 }

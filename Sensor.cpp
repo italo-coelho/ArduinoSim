@@ -1,4 +1,5 @@
 #include "Sensor.h"
+
 #include <random>
 
 namespace prog3
@@ -41,8 +42,9 @@ namespace prog3
         {   
             std::uniform_real_distribution<double> humidity_range(50.0, 100.0);
             return humidity_range(gerador);
-            
         }
+
+        return 0;
     }
 
     int Sensor::getTipo() const {return Tipo;}
@@ -52,7 +54,4 @@ namespace prog3
     void Sensor::setTipo(int tipo){Tipo=tipo;}
 
     void Sensor::setProtocolo(int protocolo){Protocolo=protocolo;}
-        
-
-
 }

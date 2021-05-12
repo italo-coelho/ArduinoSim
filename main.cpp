@@ -129,6 +129,47 @@ int main()
             }
         }
 
+        if(command.has("connectSensor") || command.has("attachSensor"))
+        {
+            int pin = command.findNumber();
+            
+            int protocol = SPI;
+            if(command.has("SPI"))
+            {
+                protocol = SPI;
+            }
+            else if(command.has("I2C"))
+            {
+                protocol = I2C;
+            }
+            else if(command.has("UART"))
+            {
+                protocol = UART;
+            }
+            
+            int type = 0;
+            if(command.has("TEMP"))
+            {
+                type = TEMPERATURA;
+            }
+            else if(command.has("HUMIDITY"))
+            {
+                type = UMIDADE;
+            }
+            else if(command.has("PRESSURE"))
+            {
+                type = PRESSAO;
+            }
+            if(type == 0)
+            {
+                ui.print("[connectSensor]: Invalid Sensor Type");
+            }
+            else
+            {
+                arduino.connectSensor(pin, type, protocol);
+            }
+        }
+
         if(command.has("clear") || command.has("limpa"))
         {
             ui.clearConsole();
@@ -138,4 +179,3 @@ int main()
  
     return 0;
 }
-

@@ -1,10 +1,6 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-#include <string>
-#include <vector>
-
-
 
 namespace prog3
 {   

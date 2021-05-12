@@ -7,9 +7,11 @@ UNO ->   Classe para representar o Arduino UNO
 #define UNO_H
 
 #include <vector>
+
 #include "ui.h"
 #include "pino.h"
 #include "Timer.h"
+#include "Sensor.h"
 #include "EEPROM.h"
 
 namespace prog3{
@@ -20,6 +22,8 @@ namespace prog3{
         std::vector<pino> pinD;
         std::vector<pino> pinA;
         std::vector<pino> pinS;
+
+        std::vector<Sensor> sensor;
 
         EEPROM eeprom;
         
@@ -52,7 +56,7 @@ namespace prog3{
          * @param _pin Número do pino
          * @return int Valor da Leitura
          */
-        int analogRead(int _pin);
+        double analogRead(int _pin);
 
         /**
          * @brief Lê o valor do pino Digital
@@ -131,6 +135,8 @@ namespace prog3{
          * @return unsigned long Tempo em millisegundos
          */
         unsigned long millis();
+
+        void connectSensor(int _pin, int _type, int _protocol = SPI);
     };
 }
 

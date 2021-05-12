@@ -1,5 +1,5 @@
 /*
-UI ->       Classe para apresentar a interface para o usuário na linha
+UI ->       Classe para apresentar a interface de usuário na linha
             de comando e extrair os comandos digitados pelo mesmo
 */
 
@@ -7,6 +7,7 @@ UI ->       Classe para apresentar a interface para o usuário na linha
 #define UI_H
 
 #include "String.h"
+
 #include <string>
 #include <vector>
 

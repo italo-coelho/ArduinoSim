@@ -124,7 +124,7 @@ namespace prog3
         return eeprom.read(_pos);
     }
 
-    int UNO::analogRead(int _pin)
+    double UNO::analogRead(int _pin)
     {
         unsigned int pin = unsigned(_pin);
 
@@ -135,7 +135,7 @@ namespace prog3
     {
         unsigned int pin = unsigned(_pin);
 
-        return pinD[pin].getValue();
+        return int(pinD[pin].getValue());
     }
 
     void UNO::pinMode(int _pin, int _mode)
@@ -203,5 +203,21 @@ namespace prog3
     {
         long millis = long(timer.millis() * 1000);
         return unsigned(millis);
+    }
+
+    void UNO::connectSensor(int _pin, int _type, int _protocol)
+    {
+        unsigned int pin = unsigned(_pin);
+        if(pinA[pin].getStatus() == DISPONIVEL)
+        {            
+            Sensor _sensor(_type, _protocol);
+            UNO::sensor.push_back(_sensor);
+            pinA[pin].setSensor(&sensor.back());
+            pinA[pin].setStatus(OCUPADO);
+        }
+        else if(pinA[pin].getStatus() == OCUPADO)
+        {            
+            ui->print("[connectSensor]: The pin is already Occupied\n");
+        }
     }
 }
