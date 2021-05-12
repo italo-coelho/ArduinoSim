@@ -14,6 +14,7 @@ namespace prog3
 
         double const DEFAULT_CLOCK_FREQUENCY = 16e6;
         double clock_frequency;
+        chrono::high_resolution_clock::time_point t_init;
 
     public:   
         Timer();
@@ -21,7 +22,8 @@ namespace prog3
 
         string getRealTime() const;
         double getClockFrequency()const;
-        
+        double millis()const;
+
         
     };
 }
