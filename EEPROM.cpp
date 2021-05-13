@@ -1,7 +1,5 @@
 #include "EEPROM.h"
 
-#include <iostream>
-
 namespace prog3
 {
     //Constructor
@@ -20,12 +18,6 @@ namespace prog3
     }
 
     //Methods
-
-    /**
-     * @brief Initializes the EEPROM memory
-     * @param _size the size desired for the memory
-     * @return true if successfull and false if fail
-     */
     bool EEPROM::begin(int _size)
     {
         if(vector == nullptr)
@@ -44,14 +36,12 @@ namespace prog3
             else
             {
                 ui->print("[EEPROM]: Invalid memory size\n");
-                // std::cout << "[EEPROM]: Invalid memory size\n";
                 return false;
             }
         }
         else
         {
             ui->print("[EEPROM]: Memory was already started\n");
-            // std::cout << "[EEPROM]: Memory was already started\n";
             return false;
         }
     }
@@ -61,7 +51,6 @@ namespace prog3
         if(vector == nullptr)
         {
             ui->print("[EEPROM]: Memory was not started, first use the 'begin' method\n");
-            // std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
             return '\0';
         }
         else
@@ -73,7 +62,6 @@ namespace prog3
             else
             {
                 ui->print("[EEPROM]: Position is out of bounds [0, " + std::to_string(size-1) + "]\n");
-                // std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
                 return '\0';
             }
         }
@@ -84,7 +72,6 @@ namespace prog3
         if(vector == nullptr)
         {
             ui->print("[EEPROM]: Memory was not started, first use the 'begin' method\n");
-            // std::cout << "[EEPROM]: Memory was not started, first use the 'begin' method\n";
         }
         else
         {
@@ -95,7 +82,6 @@ namespace prog3
             else
             {
                 ui->print("[EEPROM]: Position is out of bounds [0, " + std::to_string(size-1) + "]\n");
-                // std::cout << "[EEPROM]: Position is out of bounds [0, " << size-1 <<"]\n";
             }
         }
     }

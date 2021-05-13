@@ -128,6 +128,10 @@ int main()
             {
                 ui.print("Pino[D" + std::to_string(pin) + "] = " + "LOW" + "\n");
             }
+            else
+            {
+                ui.print("Pino[D" + std::to_string(pin) + "] = " + std::to_string(arduino.digitalRead(pin)) + "\n");
+            }
         }
 
         if(command.has("disconnectSensor") || command.has("dettachSensor"))

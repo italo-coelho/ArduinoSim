@@ -26,7 +26,6 @@ namespace prog3
         std::cout << "   # #    #  #  #  #  #   #  #  # #  #  #   # " << std::endl;
         std::cout << "  # # #   # #   #  #  #   #  #  #  # #  #   # " << std::endl;
         std::cout << " #     #  #  #  ###    ###   #  #    #   ###  " << std::endl;
-
         std::cout << std::endl;
     }
 

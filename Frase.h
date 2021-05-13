@@ -1,5 +1,5 @@
 /*
-Frase ->   Classe para manipulação de objetos do tipo std::strings, 
+Frase ->    Classe para manipulação de objetos do tipo std::strings, 
             de forma similar a possível com a classe Frase para Arduino
 */
 
