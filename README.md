@@ -1,6 +1,6 @@
 # ArduinoSim
 
-Simulador de Arduino UNO por Rafael Lange Rabelo e Italo Coelho
+Simulador de Arduino UNO por Rafael Lange Rabelo e Ítalo Coelho
 
 O presente programa tem como objetivo simular algumas funcionalidades básicas de um Arduino UNO.
 Foi desenvolvido para ser executado no terminal de comandos do Ubuntu. O usuário tem acesso
